@@ -14,6 +14,7 @@ function initialise(){
     }
     colorInRgb+=")";
     colorArray[i]=colorInRgb;
+    //console.log(colorArray[i]);
   }
   //initialise squareList with the colors
   for (let i=0;i<squareList.length;i++){
@@ -24,7 +25,28 @@ function initialise(){
   }
 }
 
+function chooseColor(){
+  //choose one color of the given squareList
+  let squareList = document.getElementsByClassName("square");
+  let choosenColor = squareList[Math.floor((Math.random()*5)+1)].style.background;
+  return choosenColor;
+}
+
+function gameLogic(choosenColor){
+  let squareList = document.getElementsByClassName("square");
+  console.log(choosenColor);
+  for (let i=0;i<squareList.length;i++){
+    squareList[i].addEventListener("click", function(event){
+      if (event.target.style.background === choosenColor)
+        console.log("WIN");
+      else
+        console.log("TRY AGAIN");
+    })
+  }
+}
 // main function
 window.onload = function(){
   initialise();
+  gameLogic(chooseColor());
+
 }
