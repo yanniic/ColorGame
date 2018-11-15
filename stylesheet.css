@@ -1,12 +1,16 @@
-*{
+body{
   background-color:#3e4651;
   color:white;
 }
 
 #header {
-  font-size:2em;
-  text-align:center;
-  font-family:sans-serif;
+    padding:2px;
+    margin-bottom:50px;
+    color:#3e4651;
+    background: #88f986;
+    font-size: 2em;
+    text-align: center;
+    font-family: sans-serif;
 }
 
 #container {
@@ -16,6 +20,7 @@
 
 
 .square {
+  border-radius:25px;
   width:30%;
   background: yellow;
   padding-bottom:30%;
