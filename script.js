@@ -28,23 +28,33 @@ function initialise(){
 function chooseColor(){
   let colorHead = document.getElementById("colorHead");
   let squareList = document.getElementsByClassName("square");
-  let choosenColor = squareList[Math.floor((Math.random()*5)+1)].style.background;
+  let choosenColor = squareList[Math.floor((Math.random() * 5) + 1)].style.backgroundColor;
+  console.log(choosenColor);
   colorHead.innerHTML+=" " + choosenColor;
   return choosenColor;
 }
 
 //defines the game logic
-function gameLogic(choosenColor){
+function gameLogic(choosenColor,counter){
   let statusText = document.getElementById("statusText");
   let squareList = document.getElementsByClassName("square");
-  console.log(choosenColor);
   for (let i=0;i<squareList.length;i++){
-    squareList[i].addEventListener("click", function(event){
-      if (event.target.style.background === choosenColor){
-        statusText.style.color ="#26ff00";
+      squareList[i].addEventListener("click", function (event) {
+      
+      if (event.target.style.backgroundColor == choosenColor){
+          statusText.innerHTML = "YOU WIN!";
+          statusText.style.color = "#26ff00";
+          alert("YOU WIN!");
+          location.reload();
         statusText.innerHTML ="YOU WIN!";
       }
+      else if (counter > 1 && event.target.style.backGroundColor !=choosenColor) {
+          alert("YOU LOSE!");
+          location.reload();
+      }
       else {
+        counter++;
+        console.log(counter);
         statusText.style.color="red";
         statusText.innerHTML ="TRY AGAIN!";
       }
@@ -54,6 +64,8 @@ function gameLogic(choosenColor){
 
 // main function
 window.onload = function(){
+  var counter = 0;
   initialise();
-  gameLogic(chooseColor());
+  gameLogic(chooseColor(),counter);
+  
 }
