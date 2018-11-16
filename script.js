@@ -34,23 +34,31 @@ function chooseColor(){
   return choosenColor;
 }
 
+function endOfGame(choosenColor,isWin){
+  let squareList = document.getElementsByClassName("square");
+  if(!isWin){
+    choosenColor = "black";
+  }
+  for(let i=0;i<squareList.length;i++){
+    squareList[i].style.backgroundColor = choosenColor
+  }
+}
+
 //defines the game logic
 function gameLogic(choosenColor,counter){
   let statusText = document.getElementById("statusText");
   let squareList = document.getElementsByClassName("square");
   for (let i=0;i<squareList.length;i++){
       squareList[i].addEventListener("click", function (event) {
-      
+      statusText.innerHTML = " ";
       if (event.target.style.backgroundColor == choosenColor){
           statusText.innerHTML = "YOU WIN!";
           statusText.style.color = "#26ff00";
-          alert("YOU WIN!");
-          location.reload();
-        statusText.innerHTML ="YOU WIN!";
+          endOfGame(choosenColor,true);
       }
       else if (counter > 1 && event.target.style.backGroundColor !=choosenColor) {
-          alert("YOU LOSE!");
-          location.reload();
+          statusText.innerHTML ="YOU LOSE!";
+          endOfGame(choosenColor, false);
       }
       else {
         counter++;
@@ -67,5 +75,4 @@ window.onload = function(){
   var counter = 0;
   initialise();
   gameLogic(chooseColor(),counter);
-  
 }
