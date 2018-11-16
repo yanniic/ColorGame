@@ -24,6 +24,13 @@ function initialise(){
   }
 }
 
+function initialisePlayAgainButton() {
+    let playAgainButton = document.getElementById("playAgainButton");
+    playAgainButton.addEventListener("click", function () {
+        location.reload();
+    })
+}
+
 //returns one color of the squareList array and displays it in the header of html file
 function chooseColor(){
   let colorHead = document.getElementById("colorHead");
@@ -36,12 +43,18 @@ function chooseColor(){
 
 function endOfGame(choosenColor,isWin){
   let squareList = document.getElementsByClassName("square");
+  let playAgainBlock = document.getElementById("playAgain");
+  let playAgainButton = document.getElementById("playAgainButton");
   if(!isWin){
     choosenColor = "black";
   }
   for(let i=0;i<squareList.length;i++){
     squareList[i].style.backgroundColor = choosenColor
   }
+  playAgainButton.style.backgroundColor = choosenColor;
+  initialisePlayAgainButton();
+  playAgainBlock.style.display = "block";
+
 }
 
 //defines the game logic
@@ -64,7 +77,7 @@ function gameLogic(choosenColor,counter){
         counter++;
         console.log(counter);
         statusText.style.color="red";
-        statusText.innerHTML ="TRY AGAIN!";
+        statusText.innerHTML =counter+"/3   " + "TRY AGAIN!";
       }
     })
   }

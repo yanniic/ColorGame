@@ -2,17 +2,37 @@ body{
   background-color:#3e4651;
   color:white;
 }
-
+#statusText {
+    text-align:center;
+    font-size:2em;
+    font-family:sans-serif;
+}
+#playAgain{
+    display:none;
+    text-align:center;
+    
+}
+#playAgainButton{
+    padding:20px;
+    font-size:2em;
+    color:white;
+    background-color:black;
+    border:none;
+}
 #header {
     padding:2px;
-    margin-bottom:50px;
+    margin-bottom:10px;
     color:white;
     font-size: 2em;
     text-align: center;
     font-family: sans-serif;
 }
 
-#container {
+.container {
+  display:grid;
+  grid-template-columns:100px 100px 100px;
+  grid-template-columns:auto auto auto;
+  grid-gap:20px;
   max-width: 600px;
   margin: 0 auto;
 }
@@ -20,9 +40,10 @@ body{
 
 .square {
   border-radius:25px;
-  width:30%;
+  height:100px;
+  
   background: yellow;
   padding-bottom:30%;
   margin:1.66%;
-  float:left;
+ 
 }
